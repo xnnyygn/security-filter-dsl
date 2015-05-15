@@ -1,0 +1,2 @@
+LABEL ROOT
+CALL SHOW fooLink
