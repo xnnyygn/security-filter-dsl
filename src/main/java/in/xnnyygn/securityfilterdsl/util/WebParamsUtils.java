@@ -1,9 +1,9 @@
 package in.xnnyygn.securityfilterdsl.util;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,8 +33,8 @@ public class WebParamsUtils {
     return params;
   }
 
-  public static Map<String, List<String>> collectParameters(HttpServletRequest request) {
-    Map<String, List<String>> params = new HashMap<String, List<String>>();
+  public static Map<String, Collection<String>> collectParameters(HttpServletRequest request) {
+    Map<String, Collection<String>> params = new HashMap<String, Collection<String>>();
     Enumeration<?> nameEnumeration = request.getParameterNames();
     while (nameEnumeration.hasMoreElements()) {
       String name = (String) nameEnumeration.nextElement();

@@ -36,7 +36,6 @@ public class DefaultActionExecutionContextTest {
     mockHttpServletResponse = new MockHttpServletResponse();
 
     context = new DefaultActionExecutionContext();
-    context.setUriBrokerManager(mockUriBrokerManager);
     context.setRequest(mockHttpServletRequest);
     context.setResponse(mockHttpServletResponse);
   }
@@ -48,10 +47,6 @@ public class DefaultActionExecutionContextTest {
 
     mockContext.checking(new Expectations() {
       {
-        oneOf(mockUriBrokerManager).getUriBroker("errorLink");
-        DefaultURIBroker broker = new DefaultURIBroker();
-        broker.setServerURI("http://foo.com/bar.htm");
-        will(returnValue(broker));
       }
     });
     context.showError("errorLink", "SOME_ERROR_CODE");
@@ -64,10 +59,6 @@ public class DefaultActionExecutionContextTest {
     mockHttpServletRequest.setRequestURI("/bar.htm");
     mockContext.checking(new Expectations() {
       {
-        oneOf(mockUriBrokerManager).getUriBroker("errorLink");
-        DefaultURIBroker broker = new DefaultURIBroker();
-        broker.setServerURI("http://foo.com/bar.htm");
-        will(returnValue(broker));
       }
     });
     context.execute();
@@ -79,8 +70,6 @@ public class DefaultActionExecutionContextTest {
         "src/test/resources/action-config/rule-execute-failed.txt")));
     mockContext.checking(new Expectations() {
       {
-        oneOf(mockUriBrokerManager).getUriBroker("fooLink");
-        will(returnValue(null));
       }
     });
     context.execute();

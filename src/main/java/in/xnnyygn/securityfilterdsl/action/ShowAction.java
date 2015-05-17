@@ -4,6 +4,7 @@ import in.xnnyygn.securityfilterdsl.context.ActionExecutionContext;
 import in.xnnyygn.securityfilterdsl.core.Action;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,18 +23,22 @@ public class ShowAction extends Action {
   private static final Log log = LogFactory.getLog(ShowAction.class);
   private final String locationCode;
   private final boolean allowPost;
-  private final Map<String, List<String>> parameters;
+  private final Map<String, Collection<String>> parameters;
 
   public static ShowAction create(List<String> arguments) {
     String locationCode = arguments.get(0);
-    Map<String, String> argumentPairs = parseArgumentPairs(arguments.subList(1, arguments.size()));
+    Map<String, String> argumentPairs =
+        parseArgumentPairs(arguments.subList(1, arguments.size()));
     boolean allowPost = "ALLOW_POST".equals(argumentPairs.get("options"));
-    String parameters = StringUtils.defaultString(argumentPairs.get("parameters"));
+    String parameters =
+        StringUtils.defaultString(argumentPairs.get("parameters"));
     return new ShowAction(locationCode, allowPost, parseParameters(parameters));
   }
 
-  private static Map<String, List<String>> parseParameters(String queryString) {
-    Map<String, List<String>> parameters = new HashMap<String, List<String>>();
+  private static Map<String, Collection<String>> parseParameters(
+      String queryString) {
+    Map<String, Collection<String>> parameters =
+        new HashMap<String, Collection<String>>();
     for (String pair : StringUtils.split(queryString, '&')) {
       int equalIndex = pair.indexOf('=');
       if (equalIndex < 0) {
@@ -65,7 +70,8 @@ public class ShowAction extends Action {
     return argumentPairs;
   }
 
-  public ShowAction(String locationCode, boolean allowPost, Map<String, List<String>> parameters) {
+  public ShowAction(String locationCode, boolean allowPost,
+      Map<String, Collection<String>> parameters) {
     super();
     this.locationCode = locationCode;
     this.allowPost = allowPost;
@@ -79,8 +85,8 @@ public class ShowAction extends Action {
 
   @Override
   public String toString() {
-    return "ShowAction [locationCode=" + locationCode + ", allowPost=" + allowPost
-        + ", parameters=" + parameters + "]";
+    return "ShowAction [locationCode=" + locationCode + ", allowPost="
+        + allowPost + ", parameters=" + parameters + "]";
   }
 
 }
