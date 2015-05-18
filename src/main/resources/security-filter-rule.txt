@@ -1,0 +1,9 @@
+# DSL entrance
+LABEL ROOT
+MATCH REQUEST_URI
+
+# pass request to /foo.htm
+CASE ^/foo\.htm$ => CALL PASS
+
+# redirect to barLink if any other request comes in
+DEFAULT CALL SHOW barLink
