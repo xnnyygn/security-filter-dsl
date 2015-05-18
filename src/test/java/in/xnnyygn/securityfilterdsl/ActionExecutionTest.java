@@ -133,7 +133,7 @@ public class ActionExecutionTest {
         will(returnValue("/error.htm"));
         oneOf(mockExecutionContext).setRuntimeVariable(with(any(String.class)),
             with(any(Object.class)));
-        oneOf(mockExecutionContext).debug(with("URI_2"));
+        oneOf(mockExecutionContext).debug(with("URI_3"));
       }
     });
     executeActions(action);

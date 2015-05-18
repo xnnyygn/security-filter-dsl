@@ -14,4 +14,6 @@ public interface URLManager {
   
   String buildURL(String locationCode, Map<String, Collection<String>> parameters);
   
+  boolean exists(String locationCode);
+  
 }

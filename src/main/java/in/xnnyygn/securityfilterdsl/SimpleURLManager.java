@@ -20,13 +20,11 @@ public class SimpleURLManager implements URLManager {
     return buildURL(locationCode, new HashMap<String, Collection<String>>(0));
   }
 
-  public String buildURL(String locationCode,
-      Map<String, Collection<String>> parameters) {
+  public String buildURL(String locationCode, Map<String, Collection<String>> parameters) {
 
     // check arguments
     if (locationCode == null || parameters == null) {
-      throw new IllegalArgumentException(
-          "location code or parameters should not be null");
+      throw new IllegalArgumentException("location code or parameters should not be null");
     }
 
     // check if URI exists
@@ -47,6 +45,13 @@ public class SimpleURLManager implements URLManager {
       builder.deleteCharAt(builder.length() - 1);
     }
     return builder.toString();
+  }
+
+  /**
+   * @see in.xnnyygn.securityfilterdsl.URLManager#exists(java.lang.String)
+   */
+  public boolean exists(String locationCode) {
+    return locationMap.containsKey(locationCode);
   }
 
   public void setLocationMap(Map<String, String> locationMap) {
