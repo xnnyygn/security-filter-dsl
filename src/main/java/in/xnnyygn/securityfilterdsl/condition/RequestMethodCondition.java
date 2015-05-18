@@ -7,10 +7,14 @@ import in.xnnyygn.securityfilterdsl.context.ActionExecutionContext;
  * 
  * @author xnnyygn
  */
-public class RequestMethodCondition extends AbstractPatternMatchCondition {
+public class RequestMethodCondition extends AbstractAttributeCondition {
+
+  public RequestMethodCondition() {
+    super("REQUEST_METHOD");
+  }
 
   @Override
-  protected String determineValue(ActionExecutionContext context) {
+  protected String doDeterminePattern(ActionExecutionContext context) {
     return context.getRequestMethod();
   }
 
