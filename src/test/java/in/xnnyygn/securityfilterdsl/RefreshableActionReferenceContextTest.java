@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -19,7 +18,6 @@ import org.junit.Test;
 public class RefreshableActionReferenceContextTest {
 
   @Test
-  @Ignore
   public void testGetRoot() throws InterruptedException {
     RefreshableActionReferenceContext context =
         new RefreshableActionReferenceContext(new ActionConfigParser(), 5,
@@ -58,16 +56,15 @@ public class RefreshableActionReferenceContextTest {
   }
 
   @Test
-  @Ignore
   public void testDuplicatedInstance() throws InterruptedException {
     RefreshableActionReferenceContext context1 =
-        new RefreshableActionReferenceContext(new ActionConfigParser(), 5,
+        new RefreshableActionReferenceContext(new ActionConfigParser(), 1,
             "src/test/resources/action-config/rule-pass.txt");
     context1.start();
     RefreshableActionReferenceContext context2 =
-        new RefreshableActionReferenceContext(new ActionConfigParser(), 5,
+        new RefreshableActionReferenceContext(new ActionConfigParser(), 1,
             "src/test/resources/action-config/rule-pass.txt");
     context2.start();
-    Thread.sleep(15000);
+    Thread.sleep(5000);
   }
 }
