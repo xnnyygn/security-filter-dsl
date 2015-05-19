@@ -18,7 +18,7 @@ import org.junit.Test;
  * 
  * @author xnnyygn
  */
-public class SolutionInterceptorTest {
+public class SecurityInterceptorTest {
 
   private static final String ACTION_CONFIG_PATH = "src/main/resources/security-filter-rule.txt";
   private SecurityInterceptor interceptor;

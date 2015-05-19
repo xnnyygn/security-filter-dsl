@@ -1,6 +1,7 @@
 package in.xnnyygn.securityfilterdsl;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class SimpleURLManager implements URLManager {
   /**
    * Location map. locationCode -> URI
    */
-  private Map<String, String> locationMap;
+  private Map<String, String> locationMap = Collections.emptyMap();
 
   public String buildURL(String locationCode) {
     return buildURL(locationCode, new HashMap<String, Collection<String>>(0));

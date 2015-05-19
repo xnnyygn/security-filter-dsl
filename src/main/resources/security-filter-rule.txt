@@ -1,9 +1,20 @@
 # DSL entrance
 LABEL ROOT
 MATCH REQUEST_URI
+CASE /debug.htm => CALL DEBUG hello
 
 # pass request to /foo.htm
 CASE ^/foo\.htm$ => CALL PASS
 
+CASE /some.htm => GOTO URI_SOME
+
 # redirect to barLink if any other request comes in
 DEFAULT CALL SHOW barLink
+
+####################################
+
+LABEL URI_SOME
+MATCH REQUEST_METHOD
+CASE GET => CALL DEBUG some_get
+CASE POST => CALL DEBUG some_post
+DEFAULT CALL DEBUG some_other

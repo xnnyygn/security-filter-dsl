@@ -227,7 +227,9 @@ public class DefaultActionExecutionContext implements ActionExecutionContext {
   }
 
   public void debug(String value) {
-    // do nothing, just for debug and test
+    if(log.isDebugEnabled()) {
+      log.debug("debug " + value);
+    }
   }
 
   /**

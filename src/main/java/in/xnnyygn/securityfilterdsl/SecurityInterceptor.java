@@ -25,10 +25,12 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class SecurityInterceptor extends HandlerInterceptorAdapter implements InitializingBean {
 
   private static final Log log = LogFactory.getLog(SecurityInterceptor.class);
+
   private ActionExecutionContextFactory actionExecutionContextFactory;
-  private ActionConfigParser actionConfigParser = new ActionConfigParser();
   private Resource actionConfig;
   private String actionConfigPath;
+
+  private ActionConfigParser actionConfigParser = new ActionConfigParser();
   private ActionReferenceContext actionReferenceContext;
 
   public void afterPropertiesSet() throws Exception {
